@@ -12,7 +12,7 @@ router.route('/testimonials').get((req, res) => {
   });
 
   router.route('/testimonials/:id').get((req, res) => {
-    res.json(db.testimonials[`${req.params.id - 1}`]);
+    res.json(db.testimonials.find(item => item.id == req.params.id));    
   });
 
   router.route('/testimonials').post((req, res) => {
