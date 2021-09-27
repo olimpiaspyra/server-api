@@ -1,4 +1,4 @@
-const Seat = require('../models/seat.models');
+const Seat = require('../models/seat.model');
 
 exports.getAll = async (req, res) => {
   try {

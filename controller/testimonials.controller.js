@@ -1,11 +1,11 @@
 const Testimonial = require('../models/testimonial.model');
 
 exports.getAll = async (req, res) => {
-  try {
-    const Testimonial = require('../models/testimonial.model');
-    res.json(await Testimonial.find());
+  try {      
+    res.json(await Testimonial.find());  
   } catch(err) {
     res.status(500).json({ message: err });
+    console.log(res.json)
   }
 };
 
