@@ -32,7 +32,7 @@ app.use((req, res) => {
   res.status(404).send('404 not found...');
 });
 
-mongoose.connect('mongodb+srv://olimpia:<password>@cluster0.kwezu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.once('open', () => {

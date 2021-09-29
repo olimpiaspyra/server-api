@@ -8,3 +8,5 @@ router.route('/concerts/:id').get(ConcertController.getById);
 router.route('/concerts').post(ConcertController.postAll);
 router.route('/concerts/:id').put(ConcertController.putById);
 router.route('/concerts/:id').delete(ConcertController.deleteById);
+
+module.exports = router;
