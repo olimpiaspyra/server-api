@@ -32,7 +32,14 @@ app.use((req, res) => {
   res.status(404).send('404 not found...');
 });
 
-mongoose.connect('mongodb+srv://olimpia:kodilla2021@cluster0.kwezu.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+const NODE_ENV = process.env.NODE_ENV;
+let dbUri = '';
+
+if(NODE_ENV === 'production') dbUri = 'url to remote db';
+else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/NewWaveDBtest';
+else dbUri = 'mongodb+srv://olimpia:kodilla2021@cluster0.kwezu.mongodb.net/NewWaveDB?retryWrites=true&w=majority';
+
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
@@ -54,3 +61,5 @@ const io = socket(server, {
 io.on("connection", (socket) => {
   console.log("New socket! Its id – " + socket.id);
 });
+
+module.exports = server;
