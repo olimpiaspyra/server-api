@@ -1,4 +1,5 @@
 const Seat = require('../models/seat.model');
+const sanitize = require('mongo-sanitize');
 
 exports.getAll = async (req, res) => {
   try {
@@ -22,6 +23,7 @@ exports.getById = async (req, res) => {
 exports.postAll = async (req, res) => {
   try {
     const { day, seat, client, email } = req.body;
+    const cleanEmail = sanitize(email);
 
     const chosenSeat = await Seat.findById(req.params.id);
 
@@ -32,7 +34,7 @@ exports.postAll = async (req, res) => {
       day: day, 
       seat: seat, 
       client: client,
-      email: email 
+      email: cleanEmail 
     });
       await NewSeat.save(); 
       req.io.emit('seatsUpdated', await Seat.find())
