@@ -79,7 +79,7 @@ describe('GET /api/concerts', () => {
 
   it('/:day should return one concert by day ', async () => {
     
-    const res = await request(server).get('/api/concerts/price/day/2');
+    const res = await request(server).get('/api/concerts/day/2');
     expect(res.status).to.be.equal(200);
     expect(res.body).to.be.an('array');
     expect(res.body).to.not.be.null;

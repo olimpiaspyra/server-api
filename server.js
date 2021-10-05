@@ -39,6 +39,7 @@ let dbUri = '';
 
 if(NODE_ENV === 'production') dbUri = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.kwezu.mongodb.net/NewWaveDB?retryWrites=true&w=majority`;
 else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/NewWaveDBtest';
+else dbUri = 'mongodb://localhost:27017/NewWaveDB';
 
 mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
