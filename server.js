@@ -37,7 +37,7 @@ let dbUri = '';
 
 if(NODE_ENV === 'production') dbUri = 'url to remote db';
 else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/NewWaveDBtest';
-else dbUri = 'mongodb+srv://olimpia:kodilla2021@cluster0.kwezu.mongodb.net/NewWaveDB?retryWrites=true&w=majority';
+else dbUri = `mongodb+srv://${process.env.USERNAME}:${process.env.NewWaveDB}@cluster0.kwezu.mongodb.net/NewWaveDB?retryWrites=true&w=majority`;
 
 mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
